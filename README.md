@@ -26,3 +26,6 @@ and then refresh project inside eclipse so compilation errors go away inside ecl
 to start the server and deploy war use the task
 gradle jettyRunWar
 
+
+Ref::
+http://www.javacodegeeks.com/2013/04/simple-gradle-web-application.html
