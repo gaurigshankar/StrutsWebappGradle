@@ -1,0 +1,23 @@
+//Example 1
+// to bundle all the dependent jar into a single executable jar
+jar {
+   from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+   manifest { attributes 'Main-Class': 'test.Main' }
+}
+
+//Example 2
+
+ // The below task is used to have all the depended jars in a lib directory so that the lib dir can be used when running the jar.
+ // Reference :: below link. This task needs to be added to the jar task so that, this task executed before jar task gets executed
+ //http://stackoverflow.com/questions/3445825/gradle-how-do-i-build-a-jar-with-a-lib-dir-with-other-jars-in-it
+ task copyToLib( type: Copy ) {
+    into "$buildDir/libs/lib"
+    from configurations.runtime
+}
+jar {
+   dependsOn copyToLib
+   manifest { attributes 'Main-Class': 'com.wm.bigdata.service.ImportLogsWithKafka' }
+}
+
+
+//Example 3
