@@ -3,6 +3,10 @@ apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'jetty'
 
+httpPort = 8091
+stopPort = 9080
+stopKey = "stopKey"
+
 repositories {
 	mavenCentral()
 }
